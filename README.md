@@ -1,49 +1,46 @@
-🛍️ Modern E-Commerce Platform
+# 📖 Markdown Data Reader
 
-A full-featured eCommerce web application built with **Next.js**, **WooCommerce REST API**, and **Redux Toolkit**, designed for performance, scalability, and SEO.
+A lightweight and flexible application built to **read and render data from Markdown (.md) files** — ideal for blogs, documentation systems, and content-driven websites.
 
 ---
 
 ## 🚀 Project Overview
 
-This project is part of a client requirement to build a modern shopping experience that integrates **WooCommerce as a backend** while leveraging **Next.js** for fast, server-rendered frontend pages.
+This application is designed to fetch and display data stored inside Markdown files.  
+It can be used to build static blogs, documentation sites, or portfolio pages without relying on a CMS.
 
-The application focuses on user experience, dynamic product rendering, and efficient API communication.
+The app parses `.md` files, extracts front matter metadata (like title, date, slug), and renders the Markdown content dynamically on the frontend.
 
 ---
 
-## 📋 Project Requirements
+## 🧩 Project Requirements
 
-### 🧩 Functional Requirements
+### Functional Requirements
 
-- Display products using WooCommerce REST API
-- Implement category-based product filtering
-- Enable search functionality
-- Add to cart, update quantity, and remove products
-- Checkout flow connected to WooCommerce
-- SEO-optimized dynamic pages
-- Responsive design (mobile-first)
+- Read `.md` files from a local `/content` folder
+- Parse front matter metadata (title, description, date, tags, etc.)
+- Display Markdown content as HTML
+- List and filter posts dynamically
+- SEO-friendly URLs and metadata
 
-### ⚙️ Technical Requirements
+### Technical Requirements
 
 - **Framework:** Next.js 14
-- **State Management:** Redux Toolkit
-- **Backend:** WooCommerce REST API (v3)
+- **Markdown Parser:** gray-matter, remark, rehype
 - **Styling:** Tailwind CSS
-- **Authentication:** JWT (if needed)
 - **Deployment:** Vercel / Hostinger
+- **File Structure:** Markdown files stored locally in `/content/`
 
 ---
 
 ## 🧠 Features
 
-- Product listing with pagination and filters
-- Detailed product view with gallery
-- Shopping cart management (add/remove/update)
-- Checkout and order summary
-- Server-side rendering (SSR) for SEO
-- Reusable UI components
-- Clean folder structure
+- Fetch and render Markdown content
+- Display front matter data (title, date, author)
+- SEO optimization with Next.js
+- Supports code syntax highlighting
+- Markdown to HTML conversion
+- Lightweight and fast
 
 ---
 
@@ -52,78 +49,88 @@ The application focuses on user experience, dynamic product rendering, and effic
 /src
 ├── app/ # Next.js app directory
 ├── components/ # Reusable UI components
-├── redux/ # Redux slices and store
-├── services/ # API integration (WooCommerce)
-├── styles/ # Global & module-based styles
-├── utils/ # Helper functions
-└── public/ # Static assets (images, icons)
+├── lib/ # Utility functions (markdown parser, date formatter)
+├── content/ # Markdown files (.md)
+├── styles/ # Global styles (Tailwind)
+└── public/ # Static assets
 
 yaml
 Copy code
 
+Each Markdown file typically looks like this:
+
+```markdown
+---
+title: "Understanding Next.js Markdown Parsing"
+date: "2025-11-02"
+tags: ["nextjs", "markdown", "tutorial"]
+description: "Learn how to read and render Markdown files in a Next.js app."
 ---
 
-## ⚙️ Installation & Setup
+# Introduction
 
-### Prerequisites
+Next.js makes it easy to build static pages using Markdown data...
+⚙️ Installation & Setup
+Prerequisites
+Node.js (v18 or later)
 
-- Node.js (v18 or higher)
-- npm or yarn
-- WooCommerce API credentials
+npm or yarn
 
-### Steps
+Steps
+bash
+Copy code
 
-```bash
 # Clone the repository
-git clone https://github.com/TRISHAN00/nextjs-woocommerce.git
 
-# Navigate to the project folder
-cd nextjs-woocommerce
+git clone https://github.com/TRISHAN00/markdown-data-reader.git
+
+# Navigate to the project
+
+cd markdown-data-reader
 
 # Install dependencies
+
 npm install
 
-# Copy the example environment variables
-cp .env.example .env.local
+# Run the development server
 
-# Start the development server
 npm run dev
-🔐 Environment Variables
-Create a .env.local file in the project root and add:
+Then open 👉 http://localhost:3000
+
+🧩 Environment Variables
+(Optional — only if you plan to fetch Markdown remotely)
 
 env
 Copy code
-NEXT_PUBLIC_WOOCOMMERCE_CONSUMER_KEY=your_key
-NEXT_PUBLIC_WOOCOMMERCE_CONSUMER_SECRET=your_secret
-NEXT_PUBLIC_API_URL=https://example.com/wp-json/wc/v3
+NEXT_PUBLIC_CONTENT_PATH=/content
 🧪 Scripts
-Command	Description
-npm run dev	Run development server
-npm run build	Create production build
-npm run start	Start production server
-npm run lint	Run ESLint checks
+Command Description
+npm run dev Run development server
+npm run build Create production build
+npm run start Start production server
+npm run lint Run ESLint checks
 
-📸 Screenshots
-Homepage	Product Page	Cart
+📦 Dependencies
+Package Purpose
+gray-matter Parse front matter metadata
+remark Convert Markdown to HTML
+rehype Sanitize and enhance HTML
+next Framework for rendering
+tailwindcss Styling
 
-Add screenshots in the screenshots/ folder for better presentation.
+📸 Example Output
+Blog List Markdown Page
 
 🧰 Technologies Used
-Next.js 14 – React framework for SSR/SSG
+Next.js 14 – Frontend framework
 
-Redux Toolkit – State management
+Gray-Matter – Extracts metadata from Markdown files
 
-WooCommerce REST API – Backend eCommerce data
+Remark / Rehype – Markdown to HTML conversion
 
 Tailwind CSS – Styling
 
-Axios / Fetch – API communication
-
-Vercel – Deployment
-
-🔗 API Reference
-WooCommerce REST API documentation:
-👉 https://woocommerce.github.io/woocommerce-rest-api-docs/
+Vercel – Deployment platform
 
 👨‍💻 Author
 Trishan Saha
@@ -131,7 +138,4 @@ Trishan Saha
 💼 LinkedIn
 🐙 GitHub
 📧 trishansaha43@gmail.com
-
-📜 License
-This project is licensed under the MIT License – see the LICENSE file for details.
 ```
