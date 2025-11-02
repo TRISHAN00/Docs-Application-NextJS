@@ -1,6 +1,7 @@
+import Header from "@/components/Header";
+import { getDocuments } from "@/lib/doc";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { getDocuments } from "@/lig/doc";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,12 +19,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  getDocuments()
+  const allDocuments = getDocuments();
+
+  console.log(allDocuments)
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header docs={allDocuments} />
         {children}
       </body>
     </html>
